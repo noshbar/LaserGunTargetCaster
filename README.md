@@ -21,13 +21,16 @@ Also, friggin' laser beams!
 ### Example
 
 Install dependencies once:
+`pip install numpy opencv-contrib-python-headless pychromecast`
+OR if you want local preview functionality:
 `pip install numpy opencv-contrib-python pychromecast`
 
-`python lasertarget.py --address 192.168.0.2 --port 8080 --index 2 --castto "Target Monitor"`
+`python lasertarget.py --address 192.168.0.2 --port 8080 --index 2 --castto "Target Monitor" --display`
 
   * address/adapter and port of local webserver that will be created on the same computer this script is running on, has to be on the same network as Chromecast device (the device will pull content from this address).
   * index of camera device in OpenCV list, trial and error for now
   * castto the Chromecast device with this name
+  * display the debug windows
 
 `python lasertarget.py`
 
@@ -35,6 +38,32 @@ Install dependencies once:
   * uses the first camera device
   * will cast to the first device it finds, or just shows the preview window if none are found
 
+
+### Running Headless  
+
+You may wish to run this on a Raspberry Pi 3 without X installed, on Raspbian Lite.
+If so, you will need the following dependencies
+
+```
+sudo apt install libhdf5-100
+sudo apt install libharfbuzz0b
+sudo apt install libwebp6
+sudo apt install libjasper1
+sudo apt install libilmbase12
+sudo apt install libopenexr22
+sudo apt install libgstreamer1.0-0
+sudo apt install libavcodec-extra57
+sudo apt install libavformat57
+sudo apt install libswscale4
+sudo apt install libgtk-3
+sudo apt install libgtk-3-0
+sudo apt install libqtgui4
+sudo apt install libqt4-test
+```
+
+and you can run it without the `display` command line:
+
+`python lasertarget.py`
 
 ### Tech Used
 

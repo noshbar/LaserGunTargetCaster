@@ -206,9 +206,9 @@ class LaserTracker(object):
         """Display the combined image and (optionally) all other image channels
         NOTE: default color space in OpenCV is BGR.
         """
-        cv2.imshow('RGB_VideoFrame', frame)
-        #cv2.imshow('LaserPointer', self.channels['laser'])
         if self.display_thresholds:
+            cv2.imshow('LaserPointer', self.channels['laser'])
+            cv2.imshow('RGB_VideoFrame', frame)
             cv2.imshow('Thresholded_HSV_Image', img)
             cv2.imshow('Hue', self.channels['hue'])
             cv2.imshow('Saturation', self.channels['saturation'])
@@ -218,9 +218,8 @@ class LaserTracker(object):
         sys.stdout.write("Using OpenCV version: {0}\n".format(cv2.__version__))
 
         # create output windows
-        self.create_and_position_window('RGB_VideoFrame',
-                                        0, 0)
         if self.display_thresholds:
+            self.create_and_position_window('RGB_VideoFrame', 0, 0)
             self.create_and_position_window('LaserPointer', 10 + self.cam_width, 0)
             self.create_and_position_window('Thresholded_HSV_Image', 10, 10)
             self.create_and_position_window('Hue', 20, 20)
